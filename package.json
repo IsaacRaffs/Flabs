@@ -1,0 +1,24 @@
+{
+  "name": "tabnewswriting",
+  "version": "1.0.0",
+  "description": "This's a plain application learned from curso.dev by Filipe Deschamps",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IsaacRaffs/tabnewswriting.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IsaacRaffs/tabnewswriting/issues"
+  },
+  "homepage": "https://github.com/IsaacRaffs/tabnewswriting#readme",
+  "dependencies": {
+    "next": "^16.0.6",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}
