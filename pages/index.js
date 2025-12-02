@@ -1,8 +1,8 @@
 function Home(){
-    return <h1>Gleydson (<a>NIGGA</a>) after stole doces of hallowenn</h1> 
+    return <video src="../sources/hallo.mp4"></video>
 }
 
-function Video(){
-    return <video src="../sources/hallo.mp4"></video>
+function Title(){
+    <h1>Gleydson (<a>NIGGA</a>) after stole doces of hallowenn</h1> 
 }
 export default Home;
