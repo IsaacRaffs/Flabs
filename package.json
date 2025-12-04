@@ -4,7 +4,9 @@
   "description": "This's a plain application learned from curso.dev by Filipe Deschamps",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev"
+    "dev": "next dev",
+    "lint:check": "prettier --check .",
+    "lint:fix": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,8 @@
     "next": "^16.0.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.7.4"
   }
 }
