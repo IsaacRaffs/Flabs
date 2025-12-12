@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/IsaacRaffs/tabnewswriting#readme",
   "dependencies": {
+    "jest": "^30.2.0",
     "next": "^16.0.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
