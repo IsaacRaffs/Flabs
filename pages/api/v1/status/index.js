@@ -13,11 +13,15 @@ async function status(request, response) {
 
   const databaseVersionValue = databaseVersionResult.rows[0].server_version;
 
-  const databaseOpenedConnectionsResult = await database.query(
-    "SELECT * FROM pg_stat_activity WHERE datname ='local_user';",
-  );
+  const databaseName = process.env.POSTGRES_DATABASE;
 
-  console.log(databaseOpenedConnectionsResult.rows);
+  const databaseOpenedConnectionsResult = await database.query({
+    text: "SELECT count(*)::int FROM pg_stat_activity WHERE datname = $1;",
+    values: [databaseName],
+  });
+
+  const databaseOpenConnectionsValue =
+    databaseOpenedConnectionsResult.rows[0].count;
 
   response.status(200).json({
     updated_At: updatedAt,
@@ -25,6 +29,7 @@ async function status(request, response) {
       database: {
         version: databaseVersionValue,
         max_connections: parseInt(databaseMaxConnectionsValue),
+        openned_connections: databaseOpenConnectionsValue,
       },
     },
   });
