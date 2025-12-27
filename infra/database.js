@@ -9,16 +9,7 @@ async function query(queryObject) {
     database: process.env.POSTGRES_DATABASE,
     password: process.env.POSTGRES_PASSWORD,
     transaction: process.env.POOL_MODE,
-    ssl: process.env.NODE_ENV === "development" ? false : true,
-  });
-
-  console.log("Credenciais do postgres", {
-    host: process.env.POSTGRES_HOST,
-    port: process.env.POSTGRES_PORT,
-    user: process.env.POSTGRES_USER,
-    database: process.env.POSTGRES_DATABASE,
-    password: process.env.POSTGRES_PASSWORD,
-    transaction: process.env.POOL_MODE,
+    ssl: getSSLValue(),
   });
 
   try {
@@ -31,6 +22,10 @@ async function query(queryObject) {
   } finally {
     await client.end();
   }
+}
+
+function getSSLValue() {
+  return process.env.NODE_ENV === "development" ? false : true;
 }
 
 export default {
