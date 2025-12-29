@@ -1,5 +1,5 @@
 {
-  "name": "tabnewswriting",
+  "name": "Flabs",
   "version": "1.0.0",
   "description": "This's a plain application learned from curso.dev by Filipe Deschamps",
   "main": "index.js",
@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/IsaacRaffs/tabnewswriting.git"
+    "url": "git+https://github.com/IsaacRaffs/Flabs.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/IsaacRaffs/tabnewswriting/issues"
+    "url": "https://github.com/IsaacRaffs/Flabs/issues"
   },
-  "homepage": "https://github.com/IsaacRaffs/tabnewswriting#readme",
+  "homepage": "https://github.com/IsaacRaffs/Flabs#readme",
   "dependencies": {
     "dotenv": "^17.2.3",
     "jest": "^30.2.0",
