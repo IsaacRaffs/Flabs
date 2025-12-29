@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "sudo docker compose -f infra/compose.yaml up -d && next dev",
+    "services:up": "sudo docker compose -f infra/compose.yaml up",
     "services:stop": "sudo docker compose -f infra/compose.yaml stop",
     "services:down": "sudo docker compose -f infra/compose.yaml down",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "migration:create": "node-pg-migrate -m infra/migrations create",
+    "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up"
   },
   "repository": {
     "type": "git",
@@ -23,9 +26,11 @@
   },
   "homepage": "https://github.com/IsaacRaffs/tabnewswriting#readme",
   "dependencies": {
+    "dotenv": "^17.2.3",
     "jest": "^30.2.0",
     "mongodb": "^7.0.0",
     "next": "^16.0.6",
+    "node-pg-migrate": "^8.0.4",
     "pg": "^8.16.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
