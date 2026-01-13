@@ -16,6 +16,11 @@ async function query(queryObject) {
 }
 
 function getSSLValue() {
+  if (process.env.POSTGRES_CA) {
+    return {
+      ca: process.env.POSTGRES_CA,
+    }
+  }
   return process.env.POSTGRES_NODE_ENV === "test" ? false : true;
 }
 
