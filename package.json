@@ -3,17 +3,19 @@
   "version": "1.0.0",
   "description": "This's a plain application learned from curso.dev by Filipe Deschamps",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "sudo docker compose -f infra/compose.yaml up -d && next dev",
-    "services:up": "sudo docker compose -f infra/compose.yaml up",
-    "services:stop": "sudo docker compose -f infra/compose.yaml stop",
-    "services:down": "sudo docker compose -f infra/compose.yaml down",
+    "dev": "docker compose -f infra/compose.yaml up -d && next dev",
+    "services:up": "docker compose -f infra/compose.yaml up",
+    "services:stop": "docker compose -f infra/compose.yaml stop",
+    "services:down": "docker compose -f infra/compose.yaml down",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
-    "test": "jest",
-    "test:watch": "jest --watchAll",
+    "test": "jest --runInBand --setupFiles dotenv/config",
+    "test:watch": "jest --runInBand --watchAll",
     "migration:create": "node-pg-migrate -m infra/migrations create",
-    "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up"
+    "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up",
+    "migration:down": "node-pg-migrate -m infra/migrations --envPath down"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
   "homepage": "https://github.com/IsaacRaffs/Flabs#readme",
   "dependencies": {
     "dotenv": "^17.2.3",
+    "dotenv-expand": "^12.0.3",
     "jest": "^30.2.0",
     "mongodb": "^7.0.0",
     "next": "^16.0.6",

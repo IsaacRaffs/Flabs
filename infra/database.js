@@ -2,18 +2,9 @@ import { Client } from "pg";
 import { host, password } from "pg/lib/defaults";
 
 async function query(queryObject) {
-  const client = await new Client({
-    host: process.env.POSTGRES_HOST,
-    port: process.env.POSTGRES_PORT,
-    user: process.env.POSTGRES_USER,
-    database: process.env.POSTGRES_DATABASE,
-    password: process.env.POSTGRES_PASSWORD,
-    transaction: process.env.POOL_MODE,
-    ssl: getSSLValue(),
-  });
-
+  let client;
   try {
-    await client.connect();
+    client = await getNewClient();
     const res = await client.query(queryObject);
     return res;
   } catch (error) {
@@ -25,9 +16,24 @@ async function query(queryObject) {
 }
 
 function getSSLValue() {
-  return process.env.NODE_ENV === "development" ? false : true;
+  return process.env.POSTGRES_NODE_ENV === "test" ? false : true;
+}
+
+async function getNewClient() {
+    const client = await new Client({
+    host: process.env.POSTGRES_HOST,
+    port: process.env.POSTGRES_PORT,
+    user: process.env.POSTGRES_USER,
+    database: process.env.POSTGRES_DATABASE,
+    password: process.env.POSTGRES_PASSWORD,
+    transaction: process.env.POSTGRES_POOL_MODE,
+    ssl: getSSLValue(),
+  });
+  await client.connect();
+  return client;
 }
 
 export default {
-  query: query,
+  query,
+  getNewClient,
 };
