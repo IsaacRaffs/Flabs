@@ -14,9 +14,9 @@ export default async function migrations(request, response) {
   };
   if (request.method === "GET") {
     const migrations = await runner(defaultMigrationRunner);
+    console.log(migrations);
     await dbClient.end(); 
     console.log("entrou no get");
-    
     return response.status(200).json(migrations);
   }
 
