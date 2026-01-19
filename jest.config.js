@@ -5,9 +5,7 @@ dotenv.config({
   path: '.env.development',
 });
  
-const createJestConfig = nexJs({
-  dir: ".",
-});
+const createJestConfig = nexJs();
 
 const jestConfig = createJestConfig({
   setupFiles: ["dotenv/config"],
