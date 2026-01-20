@@ -1,6 +1,7 @@
 /**A
  * @type {import('node-pg-migrate').ColumnDefinitions | undefined}
  */
+console.log("here");
 export const shorthands = undefined;
 
 /**
