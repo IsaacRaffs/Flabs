@@ -1,5 +1,11 @@
+import { MigrationBuilder } from 'node-pg-migrate';
+
 export const shorthands = undefined;
 
-export const up = function up(pgm) {};
+export const up = (pgm: MigrationBuilder) => {
 
-export const down = function down(pgm) {};
+};
+
+export const down = (pgm: MigrationBuilder) => {
+
+};
