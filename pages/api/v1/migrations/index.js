@@ -12,22 +12,28 @@ export default async function migrations(request, response) {
     verbose: true,
     migrationsTable: "pgmigrations",
   };
-  if (request.method === "GET") {
-    const migrations = await runner(defaultMigrationRunner);
-    console.log(migrations);
-    await dbClient.end(); 
-    console.log("entrou no get");
-    return response.status(200).json(migrations);
-  }
 
-  if (request.method === "POST") {
-    const migrations = await runner({
-      ...defaultMigrationRunner,
-      dryRun: false,
-    });
-    console.log("entrou no post");
-    await dbClient.end(); 
-    return response.status(200).json(migrations);
+  try{
+    if (request.method === "GET") {
+      const migrations = await runner(defaultMigrationRunner);
+      console.log(migrations);
+      await dbClient.end(); 
+      return response.status(200).json(migrations);
+    }
+
+    if (request.method === "POST") {
+      const migrations = await runner({
+        ...defaultMigrationRunner,
+        dryRun: false,
+      });
+      return response.status(200).json(migrations);
+    }
   }
-  return response.status(405).end();
+  catch (error){
+    console.log(error);
+  }
+  finally{
+    await dbClient.end();
+  }
+  return response.status;
 }
