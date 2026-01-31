@@ -11,7 +11,7 @@
     "services:down": "docker compose -f infra/compose.yaml down",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
-    "test": "jest --runInBand --setupFiles dotenv/config",
+    "test": "npm run services:up && concurrently --names next,jest --hide next -k -s command-jest \"next dev\"  \"jest --runInBand --verbose --setupFiles dotenv/config\"",
     "test:watch": "jest --runInBand --watchAll",
     "migration:create": "node-pg-migrate -m infra/migrations create",
     "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up",
@@ -29,6 +29,8 @@
   },
   "homepage": "https://github.com/IsaacRaffs/Flabs#readme",
   "dependencies": {
+    "async-retry": "^1.3.3",
+    "concurrently": "^9.2.1",
     "dotenv": "^17.2.3",
     "dotenv-expand": "^12.0.3",
     "jest": "^30.2.0",
