@@ -29,11 +29,9 @@ export default async function migrations(request, response) {
     return response.status(405).json({
       error: "method not allowed",
     });
-  }
-  catch (error){
+  } catch (error) {
     console.log(error);
-  }
-  finally{
+  } finally {
     await dbClient.end();
   }
 }

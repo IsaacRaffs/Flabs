@@ -1,4 +1,4 @@
-import orchestrator from "tests/orchestrator.js"; 
+import orchestrator from "tests/orchestrator.js";
 import database from "infra/database";
 
 beforeAll(async () => {
@@ -8,7 +8,7 @@ beforeAll(async () => {
 
 test("POST to /api/v1/migrations should return status 200", async () => {
   const response1 = await fetch("http://localhost:3000/api/v1/migrations", {
-    method: 'POST',
+    method: "POST",
   });
   expect(response1.status).toBe(200);
 
@@ -18,7 +18,7 @@ test("POST to /api/v1/migrations should return status 200", async () => {
   expect(response1Body.length).toBeGreaterThan(0);
 
   const response2 = await fetch("http://localhost:3000/api/v1/migrations", {
-    method: 'POST',
+    method: "POST",
   });
   expect(response2.status).toBe(200);
 
@@ -26,5 +26,4 @@ test("POST to /api/v1/migrations should return status 200", async () => {
 
   expect(Array.isArray(response2Body)).toBe(true);
   expect(response2Body.length).toBe(0);
-
 }, 30000);
