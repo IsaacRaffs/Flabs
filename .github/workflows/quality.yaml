@@ -12,4 +12,4 @@ jobs:
         with:
           node-version: "22.17.0"
       - run: npm ci
-      - run: npm run lint:prettier:check
+      - run: npm run lint
