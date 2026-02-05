@@ -11,6 +11,8 @@
     "services:down": "docker compose -f infra/compose.yaml down",
     "lint:prettier:check": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "test": "npm run services:up && concurrently --names next,jest --hide next -k -s command-jest \"next dev\"  \"jest --runInBand --verbose --setupFiles dotenv/config\"",
     "test:watch": "jest --runInBand --watchAll",
     "migration:create": "node-pg-migrate -m infra/migrations create",
@@ -42,7 +44,11 @@
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
     "baseline-browser-mapping": "^2.9.19",
+    "eslint": "^9.39.2",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^17.3.0",
     "prettier": "^3.7.4"
   }
 }
