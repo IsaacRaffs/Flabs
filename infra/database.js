@@ -1,5 +1,4 @@
 import { Client } from "pg";
-import { host, password } from "pg/lib/defaults";
 
 async function query(queryObject) {
   let client;

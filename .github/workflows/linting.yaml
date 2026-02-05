@@ -1,10 +1,10 @@
-name: Linting
+name: Qualitycode
 
 on: pull_request
 
 jobs:
   prettier:
-    name: Prettier
+    name: Qualitycode
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -12,4 +12,4 @@ jobs:
         with:
           node-version: "22.17.0"
       - run: npm ci
-      - run: npm run lint:prettier:check
+      - run: npm run lint:fix
